@@ -1,22 +1,24 @@
 import * as React from 'react';
 import './App.css';
+import { withRouter,Route, Switch, Redirect } from 'react-router-dom';
+import { HomeScreen } from './Components/HomeScreen';
+import { TodosScreen } from './Components/TodosScreen';
 
-import logo from './logo.svg';
+export const ROUTE_ROOT = "";
+export const ROUTE_TODOS = "todos";
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+class xApp extends React.Component {
+
+	public render() {
+		return (
+			<div>
+			<Switch>
+				<Route exact path={`/${ROUTE_ROOT}`} component={HomeScreen}/>
+				<Route path={`/${ROUTE_TODOS}`} component={TodosScreen}/>
+			</Switch>
+			</div>
+		);
+	}
 }
 
-export default App;
+export const App = withRouter(xApp);
