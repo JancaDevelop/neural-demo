@@ -11,8 +11,7 @@ class xHomeScreen extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>this is homepage</h1>
-				<Link to={`/${ROUTE_TODOS}`}>link to TODOS</Link>
+				<h1>This is homepage</h1>
 			</div>
 		);
 	}
