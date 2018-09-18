@@ -23,4 +23,4 @@ class xApp extends React.Component {
 	}
 }
 
-export const App = withRouter(xApp);
+export const App = (xApp);
