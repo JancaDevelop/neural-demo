@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import { IStore } from '../redux/store';
 import { ITodoReducer } from '../redux/todo/todoReducer';
-import { withRouter,Route, Switch, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ROUTE_TODOS } from '../App';
 
 interface IProps {
@@ -22,7 +22,13 @@ class xTodoList extends React.Component<IProps,IState> {
 
         return (
             <div>
-				<Link to={`${ROUTE_TODOS}`} />
+				{todoList.map(todo=>{
+					return (
+						<div>
+						<Link to={`/${ROUTE_TODOS}/${todo.id}`}>{todo.name}</Link>
+						</div>
+					)
+				})}
             </div>
         )
     }

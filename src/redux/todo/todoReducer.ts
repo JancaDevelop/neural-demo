@@ -3,7 +3,8 @@ import {isType} from 'typescript-fsa';
 import { todoAction } from "./todoAction";
 
 export interface ITodo {
-    id: number
+	id: number
+	name: string
     text: string
     isDone: boolean
 }
@@ -17,6 +18,13 @@ const initialState: ITodoReducer = {
 };
 
 export function todoReducer(state=initialState, action: Action){
+
+    if(isType(action,todoAction.setTodoList)){
+        return {
+            ...state,
+            todoList: action.payload.todoList
+        }
+    }
 
     if(isType(action,todoAction.addTodo)){
         return {

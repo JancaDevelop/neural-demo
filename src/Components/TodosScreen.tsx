@@ -4,7 +4,9 @@ import { IStore } from '../redux/store';
 import { ITodoReducer } from '../redux/todo/todoReducer';
 import { withRouter,Route, Switch, Redirect } from 'react-router-dom';
 import { ROUTE_TODOS } from '../App';
-import { TodoDetailScreen } from './TodoDetailScreen';
+import { TodoDetail } from './TodoDetail';
+import { TodoList } from './TodoList';
+import { todoDM } from '../todoDM';
 
 interface IProps {
 	match: any
@@ -18,28 +20,17 @@ interface IState {
 class xTodosScreen extends React.Component<IProps,IState> {
 
 	componentDidMount(){
-		
-	}
-
-	componentDidUpdate(prevProps){
-
+		//tady poloz dotaz na firebase, stahni data a vloz je do reduxu
+		todoDM.fetchTodos();
 	}
 
     render(){
 
-		const {todoList} = this.props.todoReducer;
-
         return (
             <div>
-				<h1>This is todos</h1>
-				todo1
-				todo2
-				todo3
-
-				<Route exact path={`/${ROUTE_TODOS}/:todoId`} component={TodoDetailScreen}/>
-				{/* {todoList.map(todo=>{
-					return <div>{todo.text}</div>
-				})} */}
+				<h1>TODOS SCREEN</h1>
+				<Route path={`/${ROUTE_TODOS}`} component={TodoList}/>
+				<Route exact path={`/${ROUTE_TODOS}/:todoId`} component={TodoDetail}/>
             </div>
         )
     }
